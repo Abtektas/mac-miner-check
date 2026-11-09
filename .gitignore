@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.DS_Store
+# never commit scan output: it holds user names, paths and app lists
+*.txt
+*.json
+out*
