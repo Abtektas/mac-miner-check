@@ -11,6 +11,55 @@ and restarted by a LaunchAgent with `KeepAlive` and an encoded script.
 **It never kills, unloads, moves or deletes anything.** It only reads and
 reports. It is a quick heuristic check, not an antivirus.
 
+## Quick start
+
+No programming needed. About two minutes.
+
+1. Open **Terminal** (press `Cmd + Space`, type `Terminal`, press Return).
+2. Check that Python is there:
+
+   ```bash
+   python3 --version
+   ```
+
+   If macOS offers to install the "command line developer tools", click
+   **Install**, wait for it to finish, then run the command again.
+3. Download the tool and go into its folder:
+
+   ```bash
+   git clone https://github.com/Abtektas/mac-miner-check.git
+   cd mac-miner-check
+   ```
+
+   No `git`? Download the ZIP from the green **Code** button on this page,
+   double-click it, then type `cd ` (with a space), drag the unzipped folder
+   into the Terminal window and press Return.
+4. Optional: prove the tool works on your Mac. This briefly runs a harmless
+   fake miner and cleans up after itself; it should end with `SELFTEST PASS`.
+
+   ```bash
+   zsh selftest.sh
+   ```
+
+5. Scan your Mac:
+
+   ```bash
+   python3 -I miner_check.py
+   ```
+
+   For a fuller scan that also sees system processes, run it with `sudo` and
+   type your Mac password (nothing shows while you type):
+
+   ```bash
+   sudo python3 -I miner_check.py
+   ```
+
+**Reading the result:** look at the lines that start with `[HIGH]` or
+`[MED ]`. If there are none, nothing miner-like was found. `[LOW ]` and
+`[INFO]` lines are usually harmless, for example leftovers from apps you
+deleted. If you see `[HIGH]`, read [If you get a HIGH finding](#if-you-get-a-high-finding)
+before you change anything.
+
 ## Requirements
 
 - macOS (tested on macOS 27.2, Apple M4)
